@@ -1,0 +1,191 @@
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+
+<!-- navbar -->
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg bg-light">
+  <div class="container">
+    <span class="navbar-brand" routerLink="/crud">ClassWave</span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item text-white" (click)="onRouteChange()">
+          deshbord
+        </li> 
+      </ul>
+      <div class="d-flex">
+       <button type="button" class="btn btn-primary m-2" (click)="logout()">
+        Log out
+      </button>
+    </div>
+    </div>
+  </div>
+</nav>
+
+<section class="py-5">
+  <form
+    [formGroup]="myForm"
+    (ngSubmit)="onSubmit()"
+    class="container border rounded-4 col-md-5 shadow p-5 my-5"
+  >
+    <h3 class="mb-4">Student Form</h3>
+    <div class="mb-3">
+      <label for="input1" class="form-label">First Name</label>
+      <input
+        type="text"
+        formControlName="firstName"
+        class="form-control"
+        id="input1"
+        required
+      />
+      <span class="text-danger" *ngIf="controll('firstName')"
+        >this input is filed</span
+      >
+    </div>
+    <div class="mb-3">
+      <label for="input2" class="form-label">Last Name</label>
+      <input
+        type="text"
+        formControlName="lastName"
+        class="form-control"
+        id="input2"
+        required
+      />
+      <span class="text-danger" *ngIf="controll('lastName')"
+        >this input is filed</span
+      >
+    </div>
+    <div class="mb-3">
+      <label for="input3" class="form-label">mobile no.</label>
+      <input
+        type="text"
+        formControlName="mobile"
+        class="form-control"
+        id="input3"
+        required
+      />
+      <span class="text-danger" *ngIf="controll('mobile')"
+        >this input is filed</span
+      >
+    </div>
+    <div class="mb-3">
+      <label for="input4" class="form-label">Email</label>
+      <input
+        type="email"
+        formControlName="email"
+        class="form-control"
+        id="input4"
+        required
+      />
+      <span class="text-danger" *ngIf="controll('email')"
+        >this input is filed</span
+      >
+    </div>
+    <div class="mb-3">
+      <label for="input5" class="form-label">Address</label>
+      <input
+        type="text"
+        formControlName="Add"
+        class="form-control"
+        id="input5"
+        required
+      />
+      <span class="text-danger" *ngIf="controll('Add')"
+        >this input is filed</span
+      >
+    </div>
+    <div class="mb-3">
+      <label for="age" class="form-label">age</label>
+      <input
+        type="number"
+        class="form-control"
+        id="age"
+        formControlName="age"
+        required
+      />
+      <span class="text-danger" *ngIf="controll('age')"
+        >this input is filed</span
+      >
+    </div>
+    <div class="mb-3">
+      <label class="me-4">
+        <input type="radio" formControlName="gender" value="Male" /> Male
+      </label>
+      <label>
+        <input type="radio" formControlName="gender" value="Female" /> Female
+      </label>
+      <span class="text-danger" *ngIf="controll('gender')"
+        >this input is filed</span
+      >
+    </div>
+    <div class="mb-3 form-check">
+      <input
+        type="checkbox"
+        formControlName="agreeToTerms"
+        class="form-check-input"
+        id="termsCheckbox"
+      />
+      <label class="form-check-label" for="termsCheckbox"
+        >I agree to the terms and conditions</label
+      >
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary m-2"
+      [disabled]="isEditing || myForm.invalid"
+    >
+      Submit
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary m-2"
+      [disabled]="!isEditing"
+      (click)="updateData()"
+    >
+      Update
+    </button>
+  </form>
+  <!-- ----------------------------------------------- -->
+  <table class="text-center table-dark table shadow table-hover">
+    <thead>
+      <tr>
+        <th scope="col">no.</th>
+        <th scope="col">First Name</th>
+        <th scope="col">last Name</th>
+        <th scope="col">Mobile No.</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col">Age</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Edit / Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let iii of formdata">
+        <td>{{ iii.id }}</td>
+        <td>{{ iii.firstName }}</td>
+        <td>{{ iii.lastName }}</td>
+        <td>{{ iii.mobile }}</td>
+        <td>{{ iii.email }}</td>
+        <td>{{ iii.Add }}</td>
+        <td>{{ iii.age }}</td>
+        <td>{{ iii.gender }}</td>
+        <td>
+          <button class="btn btn-success mx-2" (click)="editData(iii.id)">
+            Edit
+          </button>
+          <button class="btn btn-danger mx-2" (click)="delete(iii.id)">
+            Remove
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

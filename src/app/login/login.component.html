@@ -1,0 +1,30 @@
+ <section class="p-5">
+  <form [formGroup]="loginForm" (ngSubmit)="login()" class="container border rounded-4 col-md-4 shadow p-5">
+  <h2 class="text-center">Login</h2>
+  <div class="mb-3">
+    <label for="input1" class="form-label">Username:</label>
+    <input type="text" id="username" name="username" class="form-control" placeholder="User Name"
+    formControlName="name" required [attr.disabled]="forgetpassword ? true : null">
+  </div>
+  
+  <div class="mb-3">
+    <label for="input4" class="form-label">Password:</label>
+    <input type="text" id="input4" name="password" class="form-control" placeholder="Password"
+      formControlName="password" required  >
+    <span class="text-primary cursor-pointer" (click)="forgetpass()">Forget Password</span>
+  </div>
+ 
+  <div class="mb-3">
+    <label for="password">Code (OTP):</label>
+    <input type="text" name="password" class="form-control" placeholder="OTP"
+      formControlName="id" required [attr.disabled]="forgetpassword ? true : null">
+  </div> 
+  <button type="submit" class="btn btn-primary m-2" *ngIf="!forgetpassword" (click)="login()">Login</button>
+  <button type="button" class="btn btn-primary m-2" *ngIf="forgetpassword" [disabled]="loginForm.value.password === ''" (click)="resetPassword()">Reset Password</button>
+  
+</form>
+</section>
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"  size="medium"  color="#fff"  type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

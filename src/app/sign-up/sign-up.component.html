@@ -1,0 +1,22 @@
+<section>
+  <div class="d-flex justify-content-between mx-3">
+    <h3>Wellcome to.. <span class="text-success">ClassWave</span></h3>
+    <button class="btn btn-danger m-3 " routerLink="/login">Login</button>
+  </div>
+  <form [formGroup]="setform" (ngSubmit)="onSubmit()" class="container border rounded-4 col-md-4 shadow p-5 ">
+    <h2 class="text-center">Sign-up</h2>
+    <div class="mb-3">
+      <label for="input1" class="form-label">Name</label>
+      <input type="text" formControlName="name" placeholder="inter your name" class="form-control" id="input1" required>
+    </div>
+    <div class="mb-3">
+      <label for="input4" class="form-label">Password</label>
+      <input type="password" formControlName="password" placeholder="inter password" class="form-control" id="input4" required>
+    </div>
+    <button type="submit" class="btn btn-primary m-2" [disabled]="setform.invalid">sign-up</button>
+  </form>  
+</section>
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"  size="medium"  color="#fff"  type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

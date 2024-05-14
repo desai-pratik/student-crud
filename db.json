@@ -1,0 +1,46 @@
+{
+  "posts": [
+    {
+      "firstName": "Qwerty",
+      "lastName": "Zxcvb",
+      "mobile": "8888888822",
+      "email": "sata@gmail.com",
+      "gender": "Male",
+      "Add": "dwdw",
+      "age": 2,
+      "agreeToTerms": true,
+      "id": "6"
+    },
+    {
+      "firstName": "Demo",
+      "lastName": "Demo",
+      "mobile": "9876433234",
+      "email": "erert@reger.com",
+      "gender": "Male",
+      "Add": "etretert",
+      "age": 3,
+      "agreeToTerms": true,
+      "id": "da3a"
+    }
+  ],
+  "user": [
+    {
+      "name": "pratik",
+      "password": "ddddd",
+      "id": "8905"
+    },
+    {
+      "id": "005a",
+      "name": "desai",
+      "password": "desaipratik"
+    },
+    {
+      "id": "f9ec",
+      "name": "demo",
+      "password": "demo"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
